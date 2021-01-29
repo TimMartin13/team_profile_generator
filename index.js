@@ -70,3 +70,34 @@ const questionIntern = [
         name: 'internSchool',
     }
 ]
+
+function init() {
+    // Set title to manager
+    let title = 'Manager';
+
+    inquirer
+        .prompt(employeeQuestions(title))
+        .then((response) => console.log(response));
+}
+
+init();
+// Start application (init)
+// Set title to manager
+// Ask Everyone questions
+// Ask Manager question
+// Create new Manager and save
+// Prompt for Engineer, Intern or Finish
+// If Engineer
+    // Change title to Engineer
+    // Ask Everyone questions
+    // Ask Engineer question
+    // Create new Engineer and save
+// If Intern
+    // Change title to Intern
+    // Ask everyone questions
+    // Ask Intern question
+    // Create new Intern and save
+
+
+ // -------------------------------------------- Teacher pseudo code ----------------------------------//
+    
