@@ -70,6 +70,12 @@ Navigate the menu with the arrow keys and enter as many team members as you like
 ![test output team](./assets/images/testPage.jpg)
 
 
+
+### Test video:
+
+[Video link](https://drive.google.com/file/d/1d-9kY23S0y11e8tv31H1BUJgwIAB55zf/view?usp=sharing)
+
+
 ## Technologies
 
 HTML, CSS, JavaScript, Node.js, Test Driven Delevopment, npm packages (inquirer, jest).
