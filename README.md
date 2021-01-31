@@ -67,6 +67,8 @@ after the Manager, you will be prompted to enter an Engineer, Intern, or Finish.
 
 Navigate the menu with the arrow keys and enter as many team members as you like. Once you are finished, arrow down to the `Finish building your team` and then your team index.html will be generated in the dist folder.  Open the index.html in your favorite browser and BOOM!
 
+![test output team](./assets/images/testPage.jpg)
+
 
 ## Technologies
 
