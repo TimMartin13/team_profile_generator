@@ -154,8 +154,3 @@ function writeToFile(folderName, data) {
 // Start application
 getTeamMember("Manager");
 
-
-// Installation in readme
-    // 'git clone' from our "repository"(link) and then run `npm i`
-
-    // look up when: inside of prompt 
