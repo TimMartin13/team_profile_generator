@@ -5,6 +5,12 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 /* Box-sizing border-box */
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
+/* Background honeycomb image */
+body {
+    background-image: url('cell_background.jpg')
+}
+
+/* My Team header */
 header {
     background-color: rgb(33, 33, 33);
     font-size: 40px;
@@ -12,51 +18,33 @@ header {
     text-align: center;
     height: 150px;
     padding: 40px;
+    border-bottom: 5px solid #0DAFDE;
+    margin-bottom: 50px;
+    opacity: 90%;
 }
-
-/* Some default styles to make each box visible */
-.box {
-  color:white;
-  font-size: 50px;
-  text-align: center;
-  text-shadow:4px 4px 0 rgba(0,0,0,0.1);
-  padding:10px;
-}
-
-/* Colours for each box */
-.box1 { background:#1abc9c;}
-.box2 { background:#3498db;}
-.box3 { background:#9b59b6;}
-.box4 { background:#34495e;}
-.box5 { background:#f1c40f;}
 
 /* We start writing out flexbox here. The above is just page setup */
-.container {
+.container-fluid {
   display:flex;
   flex-wrap:wrap;
   justify-content: center;
-  border:10px solid goldenrod;
 }
 
+/* Team member cards */
 .card {
-    /* width: 18rem; */
-    width:300px;
-    height: 300px;
+    width: 325px;
+    height: 325px;
     margin: 10px;
     border-radius: 10px;
-    box-shadow: 5px 5px 4px #888888;
-}
-
-.box {
-    flex-basis:300px;
-    height: 300px;
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: 5px 10px #888888;
+    box-shadow: 5px 5px 4px #000000;
+    border: 5px solid #0DAFDE;
+    background: linear-gradient(to bottom right, #111111 0%, #7B7B7B 160%);
+    opacity:95%;
+    text-shadow: 1px 1px black
 }
 
 .card ul {
-    margin-top: 25px;
+    margin-top: 5px;
 }
 
 .card ul a {
@@ -66,13 +54,13 @@ header {
 
 .card ul a:hover {
     text-decoration: none;
-    color: rgb(200, 200, 200);
+    color: #0DAFDE;
 }
 
 .card-header {
-    height: 100px;
+    height: 110px;
     color: white;
-    border-bottom: 5px solid white;
+    border-bottom: 5px solid #0DAFDE;
 }
 
 h3 span {
@@ -80,9 +68,10 @@ h3 span {
 }
 
 li span {
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    padding: 2px;
 }
 
 .list-group-item {
-    background-color: rgb(46, 46, 46);
+    background-color: transparent;
 }

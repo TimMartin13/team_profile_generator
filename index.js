@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 // Page for the HTML render template
 const render = require('./src/page-template');
-// console.log(team);
+
 // Our main classes
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
@@ -32,7 +32,7 @@ function employeeQuestions(title) {
             name: 'employeeName',
         },
         {
-            type: 'number',
+            type: 'input',
             message: "Employee number?",
             name: 'employeeId',
         },
@@ -51,7 +51,7 @@ function getFourthQuestion(title) {
     if (title === 'Manager') {
         question = [
             {
-                type: 'number',
+                type: 'input',
                 message: "Office number?",
                 name: 'fourthAnswer',
             }
@@ -89,65 +89,73 @@ function getTeamMember(title) {
         .prompt(employeeQuestions(title))
         .then(({ employeeName, employeeId, employeeEmail }) => {
             // Ask question based on title
-            inquirer
+            return inquirer
                 .prompt(getFourthQuestion(title))
-                .then(({ fourthAnswer }) => {
-                    switch(title) {
-                        case 'Manager': 
-                            employees.push(new Manager(employeeName, employeeId, employeeEmail, fourthAnswer));
-                            break;
-                        case 'Engineer': 
-                            employees.push(new Engineer(employeeName, employeeId, employeeEmail, fourthAnswer));
-                            break;
-                        case 'Intern': 
-                            employees.push(new Intern(employeeName, employeeId, employeeEmail, fourthAnswer));
-                            break;
-                    }
-                    inquirer
+        .then(({ fourthAnswer }) => {
+            switch(title) {
+                case 'Manager': 
+                    employees.push(new Manager(employeeName, employeeId, employeeEmail, fourthAnswer));
+                    break;
+                case 'Engineer': 
+                    employees.push(new Engineer(employeeName, employeeId, employeeEmail, fourthAnswer));
+                    break;
+                case 'Intern': 
+                    employees.push(new Intern(employeeName, employeeId, employeeEmail, fourthAnswer));
+                    break;
+            }
+                    return inquirer
                         .prompt(options)
-                        .then(({ role }) => {
-                            if (role.includes('Engineer'))      getTeamMember('Engineer');
-                            else if (role.includes('Intern'))   getTeamMember('Intern');
-                            else renderTeam();
-                        })
-                    // console.log(employees);
-                });
+        .then(({ role }) => {
+            if (role.includes('Engineer'))      getTeamMember('Engineer');
+            else if (role.includes('Intern'))   getTeamMember('Intern');
+            else renderTeam();
+            })
         });
+    });
+}
+// Render the team in html
+function renderTeam() {
+    let destinationFolder = 'team-profile-generator';
+    writeToFile(destinationFolder, employees);
 }
 
-function renderTeam() {
-    console.log(employees);
-    // team.push(employees);
-    fs.writeFileSync('index.html', render(employees), (err) =>
-      err ? console.error(err) : console.log('Success!')
+// Copy the style.css into the dist folder
+function copyToFolder(destinationFolder) {
+    // Copy CSS to dist folder
+    fs.copyFile('./assets/css/style.css', destinationFolder + 'style.css', (err) =>
+        err ? console.error(err) : console.log('Success!')
     );
+    // Copy background image to dist folder
+    fs.copyFile('./assets/images/cell_background.jpg', destinationFolder + 'cell_background.jpg', (err) =>
+        err ? console.error(err) : console.log('Success!')
+     );
+}
+
+// Write the data to the folder named
+function writeToFile(folderName, data) {
+    // Get the directory that index.js is in
+    const myDir = __dirname;
+
+    // Check if dist folder exists, if not make it
+    if(!fs.existsSync(myDir + "/dist")){
+        fs.mkdirSync(myDir + "/dist");
+    }
+    // Check if folder you want to save to exists, if not, make it
+    if(!fs.existsSync(myDir + "/dist/" + folderName)){
+        fs.mkdirSync(myDir + "/dist/" + folderName);
+    }
+    // Write to the file in the folder
+    fs.writeFileSync(myDir + '/dist/' + folderName + '/index.html', render(data),(err) =>
+        err ? console.error(err) : console.log('Success!')
+    );
+    // Copy the style.css to the dist folder also
+    copyToFolder(myDir + '/dist/' + folderName + '/');
 }
 // Start application
 getTeamMember("Manager");
 
-// Set title to manager
-// Ask Everyone questions
-// Ask question based on title
-// Create new (Title) and push to employee array
-// Prompt for Engineer, Intern or Finish
-    // set Title based on response, got to everyone questions
 
-// If Engineer
-    // Change title to Engineer
-    // Ask Everyone questions
-    // Ask Engineer question
-    // Create new Engineer and save
-// If Intern
-    // Change title to Intern
-    // Ask everyone questions
-    // Ask Intern question
-    // Create new Intern and save
+// Installation in readme
+    // 'git clone' from our "repository"(link) and then run `npm i`
 
-
- // -------------------------------------------- Teacher pseudo code ----------------------------------//
-
-// questions for the employee
-    // .then >> create Employee object
-        // type of employee
-            // if engineer >> create Engineer object
-            // else intern >> create Intern object
+    // look up when: inside of prompt 
