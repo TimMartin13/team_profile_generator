@@ -36,11 +36,19 @@ After installing the *jest* npm package, type
 ```
 npm run test
 ```
+Here is an example of what that looks like:
+
+[![Jest Test](./assets/images/jestTest.gif)](https://drive.google.com/file/d/1S2sAw4x7j0-WY0FgL3KMaPZ3hpCatXVn/view?usp=sharing "Testing classes with jest")
+
+
 When the tests pass, you will have output that looks similar to this:
 
-```
-PICTURE OF TEST OUTPUT
-```
+![test output example](./assets/images/testsOutput.jpg)
+
+
+### Test video:
+
+[Video link](https://drive.google.com/file/d/1S2sAw4x7j0-WY0FgL3KMaPZ3hpCatXVn/view?usp=sharing)
 
 ## Useage
 
@@ -49,7 +57,15 @@ In your terminal window type:
 ```
 node index.js
 ```
-You will then be prompted to enter your team's information.  First you will enter the Manager, after the Manager, you will be prompted to enter an Engineer, Intern, or Finish. Enter as many team members as you like. Once you are finished, choose `Finish building your team` and then your team index.html will be generated in the dist folder.  Open the index.html in your favorite browser and BOOM!
+You will then be prompted to enter your team's information.  First you will enter the Manager information,
+
+![test output manager](./assets/images/managerPrompt.jpg)
+
+after the Manager, you will be prompted to enter an Engineer, Intern, or Finish.
+ 
+![test output menu](./assets/images/menu.jpg) 
+
+Navigate the menu with the arrow keys and enter as many team members as you like. Once you are finished, arrow down to the `Finish building your team` and then your team index.html will be generated in the dist folder.  Open the index.html in your favorite browser and BOOM!
 
 
 ## Technologies
